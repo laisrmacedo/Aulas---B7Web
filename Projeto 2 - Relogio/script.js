@@ -20,6 +20,9 @@ function updateClock(){
     hElement.style.transform = `rotate(${hDeg}deg)`;
 }
 
+setInterval(updateClock, 1000);
+updateClock();
+
 function fixZero(time){
     return time < 10 ? `0${time}` : time;
     
@@ -30,7 +33,44 @@ function fixZero(time){
     // }
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+//Funcionalidade acrescentada
+
+let nameDay = [
+    "Domingo", 
+    "Segunda-feira", 
+    "Terça-feira", 
+    "Quarta-feira", 
+    "Quinta-feira", 
+    "Sexta-feira", 
+    "Sábado"
+]
+
+let nameMonth = [
+    "janeiro",
+    "fevereiro",
+    "março",
+    "abriu",
+    "maio",
+    "junho",
+    "julho",
+    "agosto",
+    "setembro",
+    "outubro",
+    "novembro",
+    "dezembro"
+]
+
+let now = new Date();
+let day = now.getDate();
+let year = now.getFullYear();
+let dayWeek = nameDay[now.getDay()];
+let monthYear = nameMonth[now.getMonth()];
+
+let dayElement = document.querySelector('.calendario')
+
+dayElement.innerHTML = `${dayWeek}, ${day} de ${monthYear} de ${year}.`;
+
+
+
 
 
